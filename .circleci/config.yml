@@ -1,6 +1,8 @@
 version: 2.1
 jobs:
   test-simple-mvvm:
+    executor:
+      name: win/default
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0.301-windowsservercore-ltsc2022 # dotnet-simple-mvvm-test:0.1
         # auth:
@@ -9,6 +11,8 @@ jobs:
     working_directory: ~/SimpleMvvm
     steps:
       - checkout
+      - run: dotnet restore
+      - run: dotnet build
       - run: dotnet test
       # - checkout
       # - when:
