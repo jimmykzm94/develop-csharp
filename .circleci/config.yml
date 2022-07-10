@@ -1,13 +1,10 @@
 version: 2.1
+orbs:
+  win: circleci/windows@4.1.1
 jobs:
   test-simple-mvvm:
     executor:
       name: win/default
-    docker:
-      - image: mcr.microsoft.com/dotnet/sdk:6.0.301-windowsservercore-ltsc2022 # dotnet-simple-mvvm-test:0.1
-        # auth:
-        #   username: $DOCKERHUB_USERNAME
-        #   password: $DOCKERHUB_PASSWORD
     working_directory: ~/SimpleMvvm
     steps:
       - checkout
