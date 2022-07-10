@@ -1,1 +1,23 @@
+version: 2.1
+jobs:
+  test-simple-mvvm:
+    docker:
+      - image: mcr.microsoft.com/dotnet/sdk:6.0.301-windowsservercore-ltsc2022 # dotnet-simple-mvvm-test:0.1
+        # auth:
+        #   username: $DOCKERHUB_USERNAME
+        #   password: $DOCKERHUB_PASSWORD
+    working_directory: ~/SimpleMvvm
+    steps:
+      - checkout
+      - run: dotnet test
+      # - checkout
+      # - when:
+      #     condition:
+      #       equal: [ main, << pipeline.git.branch >> ]
+      #     steps:
+      #       - run: echo "Run dotnet test"
 
+workflows:
+  dotnet-test:
+    jobs:
+      - test-simple-mvvm
