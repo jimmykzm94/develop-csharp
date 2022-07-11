@@ -1,24 +1,24 @@
-version: 2.1
-orbs:
-  win: circleci/windows@4.1.1
-jobs:
-  test-simple-mvvm:
-    executor:
-      name: win/default
-    working_directory: ~/SimpleMvvm
-    steps:
-      - checkout
-      - run: dotnet restore
-      - run: dotnet build
-      - run: dotnet test
-      # - checkout
-      # - when:
-      #     condition:
-      #       equal: [ main, << pipeline.git.branch >> ]
-      #     steps:
-      #       - run: echo "Run dotnet test"
+# version: 2.1
+# orbs:
+#   win: circleci/windows@4.1.1
+# jobs:
+#   test-simple-mvvm:
+#     executor:
+#       name: win/default
+#     working_directory: ~/SimpleMvvm
+#     steps:
+#       - checkout
+#       - run: dotnet restore
+#       - run: dotnet build
+#       - run: dotnet test
+#       # - checkout
+#       # - when:
+#       #     condition:
+#       #       equal: [ main, << pipeline.git.branch >> ]
+#       #     steps:
+#       #       - run: echo "Run dotnet test"
 
-workflows:
-  dotnet-test:
-    jobs:
-      - test-simple-mvvm
+# workflows:
+#   dotnet-test:
+#     jobs:
+#       - test-simple-mvvm
